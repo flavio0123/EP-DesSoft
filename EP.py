@@ -21,7 +21,7 @@ while dinheiros > 0:
     especial1 = random.choice(lista)
     especial2 = random.choice(lista)
 
-    jogador = 9
+    jogador = carta1 + carta2
     mesa = carta3 + carta4
 
     pergunta = input('Você quer apostar ? ') 
@@ -39,18 +39,28 @@ while dinheiros > 0:
 
 
             if jogador == 8 or jogador == 9 and y == 'Jogador':
-                Ganhou = True
+
+                dinheiros += x
+                print('Parábens você ganhou, e agora tem {} dinheiros !'.format(dinheiros))   
 
             elif mesa == 8 or mesa == 9 and y == 'Mesa':            
-                Ganhou = True
+
+                dinheiros += int(x * 0.95)
+                print('Parábens você ganhou, e agora tem {} dinheiros !'.format(dinheiros))
 
             elif jogador == 8  or jogador == 9 and y != 'Jogador':
-                Perdeu = True
+
+                dinheiros -= x
+                print('Infelizmente você perdeu, e agora tem {} dinheiros'.format(dinheiros))
 
             elif mesa == 8 or mesa == 9 and y != 'Mesa':
-                Perdeu = True
+
+                dinheiros -= int(x * 0.95)
+                print('Infelizmente você perdeu, e agora tem {} dinheiros'.format(dinheiros))
 
             else: 
+                print('A soma das cartas da mesa era {0} , equanto a do jogador era {1}'.format(mesa,jogador))
+
 
                 if jogador >= 10:
 
@@ -63,17 +73,21 @@ while dinheiros > 0:
                 if jogador < 8:
 
                     if jogador == 6 or jogador == 7:
-                            pass
+                        
+                        pass
                     
                     if jogador < 6:
+                        
                         jogador += especial1
 
                 if mesa < 8:
 
                     if mesa == 6 or mesa == 7:
-                            pass
+                        
+                        pass
                     
                     if mesa < 6:
+
                         mesa += especial2 
 
 
@@ -86,33 +100,41 @@ while dinheiros > 0:
                     mesa = mesa % 10
 
                 if jogador > mesa:
-                    if y == 'Jogador':
-                        Ganhou = True
-                    else:
-                        Perdeu = True
 
-                elif mesa > jogador:
-                    if y == 'Mesa':
-                        Ganhou = True
+                    if y == 'Jogador':
+
+                        dinheiros += x
+                        print('Parábens você ganhou, e agora tem {} dinheiros !'.format(dinheiros))                   
+                    
                     else:
-                        Perdeu = True
+
+                        dinheiros -= x
+                        print('Infelizmente você perdeu, e agora tem {} dinheiros'.format(dinheiros))
+                
+                elif mesa > jogador:
+
+                    if y == 'Mesa':
+
+                        dinheiros += int(x * 0.95)
+                        print('Parábens você ganhou, e agora tem {} dinheiros !'.format(dinheiros))                          
+                    
+                    else:
+                        dinheiros -= int(x * 0.95)
+                        print('Infelizmente você perdeu, e agora tem {} dinheiros'.format(dinheiros))
 
                 elif mesa == jogador:
-                    dinheiros += 80
-                    
-            if Ganhou:
-                Ganhou = False
-                dinheiros += x
-                print('Parábens você ganhou, e agora tem {} dinheiros !'.format(dinheiros))
 
-            if Perdeu:
-                Perdeu = False
-                dinheiros -= x
-                print('Infelizmente você perdeu, e agora tem {} dinheiros'.format(dinheiros))
+                    if y == 'Empate':
+                        dinheiros += x * 8
+                        print('Parábens você ganhou, e agora tem {} dinheiros !'.format(dinheiros)) 
 
+                    else:
+                        dinheiros -= x
+                        print('Infelizmente você perdeu, e agora tem {} dinheiros'.format(dinheiros))
+
+            print('A soma das cartas da mesa era {0} , equanto a do jogador era {1}'.format(mesa,jogador))
+  
         else:
-             print('Você não tem dinheiro suficiente para fazer essa aposta, seu saldo é de {} dinheiros'.format(dinheiros))
+            print('Você não tem dinheiro suficiente para fazer essa aposta, seu saldo é de {} dinheiros'.format(dinheiros))
 
-          
-
-
+print('Obrigado por Jogar !')
