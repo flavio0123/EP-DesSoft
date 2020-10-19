@@ -45,7 +45,7 @@ while dinheiros > 0:
             especial2 = random.choice(baralho)
 
         if pergunta2 == '8':
-
+        
             baralho = baralho * 8
 
             carta1 = random.choice(baralho)
@@ -85,20 +85,19 @@ while dinheiros > 0:
                 Perdeu = True
 
             else: 
-
                 if jogador >= 10:
 
                     jogador = jogador % 10
         
-                elif mesa >= 10:
+                if mesa >= 10:
                     
                     mesa = mesa % 10
 
-                elif jogador == 6 or jogador == 7 or mesa == 6 or mesa == 7:
+                if jogador == 6 or jogador == 7 or mesa == 6 or mesa == 7:
                       
                     pass
             
-                elif jogador < 6 or mesa < 6:
+                if jogador < 6 or mesa < 6:
 
                     if jogador < 6:
                             
@@ -122,7 +121,7 @@ while dinheiros > 0:
 
                     print('A soma final das cartas do jogador era {0} , equanto a da mesa era {1}'.format(jogador,mesa))   
 
-                elif jogador > mesa:
+                if jogador > mesa:
 
                     if y == 'Jogador':
 
@@ -134,7 +133,7 @@ while dinheiros > 0:
                         dinheiros -= x
                         Perdeu = True
                 
-                elif mesa > jogador:
+                if mesa > jogador:
 
                     if y == 'Mesa':
 
@@ -145,7 +144,7 @@ while dinheiros > 0:
                         dinheiros -= x
                         Perdeu = True
 
-                elif mesa == jogador:
+                if mesa == jogador:
 
                     if y == 'Empate':
 
@@ -178,7 +177,7 @@ while dinheiros > 0:
             print('Você não tem dinheiro suficiente para fazer essa aposta, seu saldo é de {} dinheiros'.format(dinheiros))
 
     else:
-
+      
         print('Obrigado por Jogar, você terminou com o saldo de {} dinheiros !'.format(dinheiros))
 
         break
